@@ -5,7 +5,7 @@ import eventlet
 
 
 app = Flask(__name__)
-sslify = SSLify(app)
+#sslify = SSLify(app)
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
 
