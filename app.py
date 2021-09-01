@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request, jsonify
 from flask_sslify import SSLify
 from flask_socketio import SocketIO, send, emit
+import eventlet
 
 
 app = Flask(__name__)
 sslify = SSLify(app)
-#app.config['SECRET_KEY'] = 'secret!'
+app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
 
 
