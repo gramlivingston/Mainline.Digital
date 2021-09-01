@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Page</title>
+</head>
+<body>
+    <h1>This is it basically</h1>
+
+ 
+
+    <div><b>Results</b></div>
+    <div id="age">Age: -</div>
+    <div id="gender">Gender: -</div>
+    <div id="emotion">Emotion: -</div>
+    <script src="https://sdk.morphcast.com/mphtools/v1.0/mphtools.js"></script>
+  <script src="https://ai-sdk.morphcast.com/v1.15/ai-sdk.js"></script>
+  <script>
+  CY.loader()
+     .licenseKey("14ddfed7db1727b9515ebff75dba2bb9c5bc2772ec8a")
+     .addModule(CY.modules().FACE_AGE.name)
+     .addModule(CY.modules().FACE_GENDER.name)
+     .addModule(CY.modules().FACE_EMOTION.name)
+     .load()
+     .then(({ start, stop }) => start());
+  
+  const age_div = document.querySelector("#age");
+  const gen_div = document.querySelector("#gender");
+  const emo_div = document.querySelector("#emotion");
+  
+  window.addEventListener(CY.modules().FACE_AGE.eventName, (evt) => {
+   age_div.innerHTML = 'Age: ' + evt.detail.output.numericAge;
+  });
+  
+  window.addEventListener(CY.modules().FACE_GENDER.eventName, (evt) => {
+   gen_div.innerHTML = 'Gender: ' + evt.detail.output.mostConfident;
+  });
+  
+  window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
+   emo_div.innerHTML = 'Emotion: ' + evt.detail.output.dominantEmotion;
+  });
+  
+  </script>
+  
+    
+</body>
+</html>
