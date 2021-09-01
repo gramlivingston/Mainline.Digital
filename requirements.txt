@@ -8,7 +8,6 @@ Flask==2.0.1
 flask-sock==0.4.0
 Flask-SocketIO==5.1.1
 Flask-SSLify==0.1.5
-Flask_SocketIO
 Flask_Session==0.3.1
 greenlet==1.1.1
 gunicorn==20.1.0
